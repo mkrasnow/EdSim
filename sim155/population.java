@@ -11,11 +11,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import rsrc.gene;
 import rsrc.kindGene;
-import util.gen.*;
-import java.util.Random;
 
 public class population {
-    private ArrayList<agent> AgentList, lastGenList;
+    private ArrayList<agent> AgentList;
     private ArrayList<group> GroupList = new ArrayList();
     private ArrayList<agent> nextGenList = new ArrayList();
     //private ArrayList<ArrayList<agent>> WorldList = new ArrayList();
@@ -176,31 +174,7 @@ public class population {
         AgentList=i;
     }
     
-    private double SSP(ArrayList<Double> x, ArrayList<Double> y){ //this calculates sum of squared deviations of the mean of XY (either SS or SP)
-        double SSP=0;
-        double sumx=0;
-        double sumy=0;
-        double sumprod=0;
-        //System.out.print("X:");
-        for(int i=0; i<x.size(); i++){
-            //System.out.print(x.get(i)+",");
-            sumx+=x.get(i);
-            sumy+=y.get(i);
-            sumprod+=x.get(i)*y.get(i);
-        }
-        //System.out.println();
-        //System.out.println(sumx + ", " + sumy + ", " + sumprod);
-        SSP=sumprod-(sumx*sumy)/x.size();
-        return SSP;
-    }
-    
-    public double pearsonr(ArrayList<Double> x, ArrayList<Double> y){
-        double r=-2;
-        r=SSP(x,y)/Math.sqrt(SSP(x,x)*SSP(y,y));
-        //System.out.println(r + "= " + SSP(x,y)+ "/SQRT(" + SSP(x,x)+ " * " + SSP(y,y)+") & n=" + x.size());
-        return r;
-    } 
-    
+     
     public void formGroups(int n) {
         group temp = new group(0);
         GroupList = new ArrayList();
